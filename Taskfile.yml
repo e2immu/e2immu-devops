@@ -1,0 +1,23 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  VERSION: '0.8.1-SNAPSHOT'
+  GIT_ROOT: '$HOME/git'
+  PROJECTS:
+    - util-internal
+    - util-external
+    - language-cst
+    - language-inspection
+    - language-java
+    - analyzer-shallow
+    - analyzer-modification
+    - analyzer-run
+tasks:
+  publish:
+    dir: '{{.GIT_ROOT}}'
+    cmds:
+      - for: 
+          var: PROJECTS
+        cmd: cd {{.ITEM}} && gradle publish -Pversion={{.VERSION}}
