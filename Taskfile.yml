@@ -5,19 +5,37 @@ version: '3'
 vars:
   VERSION: '0.8.1-SNAPSHOT'
   GIT_ROOT: '$HOME/git'
-  PROJECTS:
-    - util-internal
-    - util-external
-    - language-cst
-    - language-inspection
-    - language-java
-    - analyzer-shallow
-    - analyzer-modification
-    - analyzer-run
+ 
 tasks:
-  publish:
+
+  publish:*:
+    vars:
+      REPO: '{{index .MATCH 0}}'
+    dir: '{{.GIT_ROOT}}'
+    label: 'repo-{{.REPO}}'
+    sources: 
+      - "{{.REPO}}/*/src/**"
+    cmds:
+      - cmd: cd {{.REPO}} && gradle publish -Pversion={{.VERSION}}
+
+  publish-gradle-plugin:
     dir: '{{.GIT_ROOT}}'
     cmds:
-      - for: 
-          var: PROJECTS
-        cmd: cd {{.ITEM}} && gradle publish -Pversion={{.VERSION}}
+      - cmd: cd analyzer-run && gradle :e2immu-run-gradleplugin:publish -Pversion={{.VERSION}}
+
+  publish-maven-plugin:
+    dir: '{{.GIT_ROOT}}'
+    cmds:
+      - cmd: cd analyzer-runmvn && mvn install -U
+
+  # note: the analyzer-run publish action will not publish the Gradle plugin
+  publish-jars:
+    deps:
+      - publish:util-internal
+      - publish:util-external
+      - publish:language-cst
+      - publish:language-inspection
+      - publish:language-java
+      - publish:analyzer-shallow
+      - publish:analyzer-modification
+      - publish:analyzer-run
