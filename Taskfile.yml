@@ -5,8 +5,41 @@ version: '3'
 vars:
   VERSION: '0.8.1-SNAPSHOT'
   GIT_ROOT: '$HOME/git'
- 
+  PROJECTS:
+    - util-external/e2immu-external-support
+    - util-internal/e2immu-internal-graph
+    - util-internal/e2immu-internal-util
+    - language-cst/e2immu-cst-analysis
+    - language-cst/e2immu-cst-api
+    - language-cst/e2immu-cst-impl
+    - language-cst/e2immu-cst-io
+    - language-cst/e2immu-cst-print
+    - language-java/e2immu-java-bytecode
+    - language-java/e2immu-java-parser
+    - language-inspection/e2immu-inspection-api
+    - language-inspection/e2immu-inspection-parser
+    - language-inspection/e2immu-inspection-resource
+    - language-inspection/e2immu-inspection-integration
+    - analyzer-modification/e2immu-modification-prepwork
+    - analyzer-modification/e2immu-modification-linkedvariables
+    - analyzer-shallow/e2immu-shallow-aapi
+    - analyzer-shallow/e2immu-shallow-analyzer
+    - analyzer-run/e2immu-run-config
+    - analyzer-run/e2immu-run-main
+    - analyzer-run/e2immu-run-gradleplugin
+    - analyzer-run/testgradlepluginanalyzer
+    - analyzer-run/testgradlepluginwriteaapi
+    - analyzer-run/testgradlepluginshallow
+
 tasks:
+
+  copyProperties: 
+    sources:
+     - gradle.properties
+     - Taskfile.yml
+    cmds:
+      - for: { var: PROJECTS }
+        cmd: cp gradle.properties {{joinPath .GIT_ROOT .ITEM}}
 
   publish:*:
     vars:
