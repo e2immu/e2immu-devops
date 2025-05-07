@@ -14,9 +14,19 @@ tasks:
     dir: '{{.GIT_ROOT}}'
     label: 'repo-{{.REPO}}'
     sources: 
-      - "{{.REPO}}/*/src/**"
+      - "{{.REPO}}/*/src/main/**"
     cmds:
       - cmd: cd {{.REPO}} && gradle publish -Pversion={{.VERSION}}
+
+  publish-locally:*:
+    vars:
+      REPO: '{{index .MATCH 0}}'
+    dir: '{{.GIT_ROOT}}'
+    label: 'local-repo-{{.REPO}}'
+    sources: 
+      - "{{.REPO}}/*/src/main/**"
+    cmds:
+      - cmd: cd {{.REPO}} && gradle publishToMavenLocal -Pversion={{.VERSION}}
 
   publish-gradle-plugin:
     dir: '{{.GIT_ROOT}}'
@@ -39,3 +49,14 @@ tasks:
       - publish:analyzer-shallow
       - publish:analyzer-modification
       - publish:analyzer-run
+
+  publish-jars-locally:
+    deps:
+      - publish-locally:util-internal
+      - publish-locally:util-external
+      - publish-locally:language-cst
+      - publish-locally:language-inspection
+      - publish-locally:language-java
+      - publish-locally:analyzer-shallow
+      - publish-locally:analyzer-modification
+      - publish-locally:analyzer-run
