@@ -111,4 +111,4 @@ tasks:
     dir: '{{.GIT_ROOT}}'
     cmds:
       - for: { var: REPOS }
-        cmd: echo {{.ITEM }} && cd {{.ITEM}} && git branch --show-current && git status --porcelain
+        cmd: echo {{.ITEM }} ; cd {{.ITEM}} ; git branch --show-current ; git status --porcelain ; git status -sb | grep -E '^\#\# .*(\[.*\])' | grep -oE '\[(ahead|behind|diverged|gone).*\]' || true
