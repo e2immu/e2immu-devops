@@ -5,6 +5,18 @@ version: '3'
 vars:
   VERSION: '0.8.1-SNAPSHOT'
   GIT_ROOT: '$HOME/git'
+  REPOS:
+    - util-external
+    - util-internal
+    - language-cst
+    - language-java
+    - language-inspection
+    - analyzer-modification
+    - analyzer-shallow
+    - analyzer-run
+    - analyzer-runmvn
+    - e2immu-devops
+
   PROJECTS:
     - util-external/e2immu-external-support
     - util-internal/e2immu-internal-graph
@@ -25,6 +37,7 @@ vars:
     - analyzer-shallow/e2immu-shallow-aapi
     - analyzer-shallow/e2immu-shallow-analyzer
     - analyzer-run/e2immu-run-config
+    - analyzer-run/e2immu-run-decompile
     - analyzer-run/e2immu-run-main
     - analyzer-run/e2immu-run-gradleplugin
     - analyzer-run/testgradlepluginanalyzer
@@ -93,3 +106,9 @@ tasks:
       - publish-locally:analyzer-shallow
       - publish-locally:analyzer-modification
       - publish-locally:analyzer-run
+
+  git-status:
+    dir: '{{.GIT_ROOT}}'
+    cmds:
+      - for: { var: REPOS }
+        cmd: echo {{.ITEM }} && cd {{.ITEM}} && git branch --show-current && git status --porcelain
