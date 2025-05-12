@@ -12,7 +12,7 @@ vars:
     - language-java
     - language-inspection
     - analyzer-modification
-    - analyzer-shallow
+    - analyzer-aapi
     - analyzer-run
     - analyzer-runmvn
     - e2immu-devops
@@ -32,10 +32,12 @@ vars:
     - language-inspection/e2immu-inspection-parser
     - language-inspection/e2immu-inspection-resource
     - language-inspection/e2immu-inspection-integration
+    - analyzer-modification/e2immu-modification-common
+    - analyzer-modification/e2immu-modification-io    
     - analyzer-modification/e2immu-modification-prepwork
     - analyzer-modification/e2immu-modification-linkedvariables
-    - analyzer-shallow/e2immu-shallow-aapi
-    - analyzer-shallow/e2immu-shallow-analyzer
+    - analyzer-aapi/e2immu-aapi-archive
+    - analyzer-aapi/e2immu-aapi-parser
     - analyzer-run/e2immu-run-config
     - analyzer-run/e2immu-run-decompile
     - analyzer-run/e2immu-run-main
@@ -92,7 +94,7 @@ tasks:
       - publish:language-cst
       - publish:language-inspection
       - publish:language-java
-      - publish:analyzer-shallow
+      - publish:analyzer-aapi
       - publish:analyzer-modification
       - publish:analyzer-run
 
@@ -103,7 +105,7 @@ tasks:
       - publish-locally:language-cst
       - publish-locally:language-inspection
       - publish-locally:language-java
-      - publish-locally:analyzer-shallow
+      - publish-locally:analyzer-aapi
       - publish-locally:analyzer-modification
       - publish-locally:analyzer-run
 
