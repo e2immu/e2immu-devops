@@ -3,7 +3,7 @@
 version: '3'
 
 vars:
-  VERSION: '0.8.1-SNAPSHOT'
+  VERSION: '0.8.2-SNAPSHOT'
   GIT_ROOT: '$HOME/git'
   REPOS:
     - util-external
