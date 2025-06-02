@@ -83,8 +83,17 @@ tasks:
 
   publish-maven-plugin:
     dir: '{{.GIT_ROOT}}'
+    sources: 
+      - analyzer-runmvn/e2immu-run-mvnplugin/src/main/**
     cmds:
-      - cmd: cd analyzer-runmvn && mvn install -U
+      - cmd: cd analyzer-runmvn/e2immu-run-mvnplugin && mvn deploy -U
+
+  install-mvn-plugin:
+    dir: '{{.GIT_ROOT}}'
+    sources: 
+      - analyzer-runmvn/e2immu-run-mvnplugin/src/main/**
+    cmds:
+      - cmd: cd analyzer-runmvn/e2immu-run-mvnplugin && mvn install -U
 
   # note: the analyzer-run publish action will not publish the Gradle plugin
   publish-jars:
@@ -97,6 +106,7 @@ tasks:
       - publish:analyzer-aapi
       - publish:analyzer-modification
       - publish:analyzer-run
+      - publish-maven-plugin
 
   publish-jars-locally:
     deps:
@@ -108,7 +118,8 @@ tasks:
       - publish-locally:analyzer-aapi
       - publish-locally:analyzer-modification
       - publish-locally:analyzer-run
-
+      - install-mvn-plugin
+      
   git-status:
     dir: '{{.GIT_ROOT}}'
     cmds:
