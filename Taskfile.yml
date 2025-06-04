@@ -97,29 +97,29 @@ tasks:
 
   # note: the analyzer-run publish action will not publish the Gradle plugin
   publish-jars:
-    deps:
-      - publish:util-internal
-      - publish:util-external
-      - publish:language-cst
-      - publish:language-inspection
-      - publish:language-java
-      - publish:analyzer-aapi
-      - publish:analyzer-modification
-      - publish:analyzer-run
-      - publish-maven-plugin
+    cmds:
+      - task: publish:util-internal
+      - task: publish:util-external
+      - task: publish:language-cst
+      - task: publish:language-inspection
+      - task: publish:language-java
+      - task: publish:analyzer-aapi
+      - task: publish:analyzer-modification
+      - task: publish:analyzer-run
+      - task: publish-maven-plugin
 
   publish-jars-locally:
-    deps:
-      - publish-locally:util-internal
-      - publish-locally:util-external
-      - publish-locally:language-cst
-      - publish-locally:language-inspection
-      - publish-locally:language-java
-      - publish-locally:analyzer-aapi
-      - publish-locally:analyzer-modification
-      - publish-locally:analyzer-run
-      - install-mvn-plugin
-      
+    cmds:
+      - task: publish-locally:util-internal
+      - task: publish-locally:util-external
+      - task: publish-locally:language-cst
+      - task: publish-locally:language-inspection
+      - task: publish-locally:language-java
+      - task: publish-locally:analyzer-aapi
+      - task: publish-locally:analyzer-modification
+      - task: publish-locally:analyzer-run
+      - task: install-mvn-plugin
+
   git-status:
     dir: '{{.GIT_ROOT}}'
     cmds:
