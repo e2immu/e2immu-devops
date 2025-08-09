@@ -1,0 +1,96 @@
+= The Road to Immutability
+Bart Naudts <bart.naudts@codelaser.io>
+:url-repo: https://codelaser.io/maddi
+:revnumber: 5
+:revdate: {docdate}
+:doctype: book
+:source-highlighter: rouge
+:rouge-style: github
+:icons: font
+:sectlinks:
+:sectanchors:
+:idprefix:
+:idseparator: -
+:includedir: sections
+:imagesdir: images
+:toc: left
+:toclevels: 3
+:numbered:
+:experimental:
+:attribute-missing: warn
+:description: A walk-through of the concepts and definitions of _maddi_
+:maddi: pass:normal[ _maddi_ ]
+
+
+:allowsInterrupt: pass:normal[ `@AllowsInterrupt` ]
+:beforeMark: pass:normal[ `@BeforeMark` ]
+:container:  pass:normal[ `@Container` ]
+:extensionClass: pass:normal[ `@ExtensionClass` ]
+:final:  pass:normal[ `@Final` ]
+:finalAbsent:  pass:normal[ `@Final(absent=true)` ]
+:finalFields: pass:normal[ `@FinalFields` ]
+:finalFieldsAbsent: pass:normal[ `@FinalFields(absent=true)` ]
+:finalizer:  pass:normal[ `@Finalizer` ]
+:fluent: pass:normal[ `@Fluent` ]
+:identity:  pass:normal[ `@Identity` ]
+:ignoreModifications:  pass:normal[ `@IgnoreModifications` ]
+:immutable: pass:normal[ `@Immutable` ]
+:immutableHC: pass:normal[ `@Immutable(hc=true)` ]
+:immutableContainer: pass:normal[ `@ImmutableContainer` ]
+:immutableContainerHC: pass:normal[ `@ImmutableContainer(hc=true)` ]
+:independent:  pass:normal[ `@Independent` ]
+:independentAbsent: pass:normal[ `@Independent(absent=true)` ]
+:independentHC:  pass:normal[ `@Independent(hc=true)` ]
+:mark: pass:normal[ `@Mark` ]
+:modified:  pass:normal[ `@Modified` ]
+:nm: pass:normal[ `@NotModified`]
+:nn: pass:normal[ `@NotNull` ]
+:nnContent: pass:normal[ `@NotNull(content=true)` ]
+:nullable: pass:normal[ `@Nullable` ]
+:only:  pass:normal[ `@Only` ]
+:singleton: pass:normal[ `@Singleton` ]
+:sse: pass:normal[ `@StaticSideEffects` ]
+:testMark: pass:normal[ `@TestMark` ]
+:utilityClass: pass:normal[ `@UtilityClass` ]
+
+
+// PDF-specific TOC placement
+ifdef::backend-pdf[]
+:toc: macro
+endif::[]
+
+// Abstract or introduction
+[abstract]
+Effective and eventual immutability with _maddi_, a static code analyser for Java.
+
+// Table of contents for PDF
+ifdef::backend-pdf[]
+toc::[]
+<<<
+endif::[]
+
+// Include all sections
+include::{includedir}/01-introduction.adoc[leveloffset=+1]
+
+<<<
+
+include::{includedir}/02-finalfields.adoc[leveloffset=+1]
+
+<<<
+
+include::{includedir}/03-modification.adoc[leveloffset=+1]
+
+<<<
+
+include::{includedir}/04-container.adoc[leveloffset=+1]
+
+<<<
+
+include::{includedir}/05-conclusion.adoc[leveloffset=+1]
+
+// Appendices
+[appendix]
+include::{includedir}/appendix-a-reference.adoc[leveloffset=+1]
+
+[appendix]
+include::{includedir}/appendix-b-troubleshooting.adoc[leveloffset=+1]
