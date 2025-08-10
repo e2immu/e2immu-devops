@@ -98,5 +98,30 @@ include::{includedir}/050-immutability.adoc[leveloffset=+1]
 
 <<<
 
+include::{includedir}/060-eventual.adoc[leveloffset=+1]
+
+<<<
+
+include::{includedir}/070-modification-part2.adoc[leveloffset=+1]
+
+<<<
+
 include::{includedir}/080-hidden-content.adoc[leveloffset=+1]
 
+
+<<<
+
+include::{includedir}/110-support-classes.adoc[leveloffset=+1]
+
+
+<<<
+
+include::{includedir}/115-use-in-analyzer.adoc[leveloffset=+1]
+
+<<<
+
+include::{includedir}/120-other-annotations.adoc[leveloffset=+1]
+
+
+[appendix]
+include::{includedir}/appendix-a-annotation-overview.adoc[leveloffset=+1]

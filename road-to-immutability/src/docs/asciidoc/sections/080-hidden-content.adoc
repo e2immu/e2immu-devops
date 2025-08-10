@@ -518,7 +518,8 @@ class GetterSetter {
 
 The following table summarizes the relationship between immutability and independence by means of example types:
 
-|==
+[cols="1,1,1,1"]
+|===
 | |Mutable, modifiable |Immutable with hidden content |Immutable without hidden content
 
 |Dependent
@@ -535,6 +536,9 @@ The following table summarizes the relationship between immutability and indepen
 |{y} `Writer`, `Iterator<String>`
 |{n}
 |{y} `int`, `String`, `Class`
+
 |===
+
+
 
 //end of file

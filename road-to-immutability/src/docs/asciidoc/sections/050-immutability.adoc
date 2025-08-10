@@ -602,7 +602,8 @@ Even if the concrete choice for `T` is modifiable, the independence rule must be
 However, as detailed and explained in <<hidden-content>>, the abstract types in `java.util.function` receive an implicit
 {ignoreModifications} annotation.
 <3> The hidden content of the type is exposed to the outside world via the `accept` method in the consumer, similarly to being exposed via the return value of the `first` method.
-<4> Computed, because it is not an abstract method. It must (and does) agree with the {nm} status of `HasSize.isEmpty()`.
+<4> Computed, because it is not an abstract method.
+It must (and does) agree with the {nm} status of `HasSize.isEmpty()`.
 
 The `Consumer` interface is defined and annotated as:
 
@@ -762,6 +763,9 @@ Up to now, we have made no distinction between static fields and instance fields
 Inside a primary type, we will stick to this rule.
 In the following example, each call to `getK` increments a counter, which is a modifying operation because the type owns the counter:
 
+NOTE: A primary type `T` is a type defined in its own file, i.e., `T.java`.
+It is not nested inside some other type.
+
 .Example {counter:example}, modifications on static fields are modifications
 [source,java]
 ----
@@ -867,7 +871,7 @@ public class CountAccess<K> {
 Nevertheless, we introduce the following rule which does distinguish between modifications on static and instance types:
 
 ****
-When static modifying methods are called, on a field not belonging to the primary type or any of the parent types, or directly on a type expression which does not refer to any of the types in the primary type or parent types, we classify the modification as a _static side effect_.
+When static modifying methods are called, on a field not belonging to the primary type, any of its enclosing types, or any of its parent types, or directly on a type different from the primary type, any of its enclosing types, or parent types, we classify the modification as a _static side effect_.
 ****
 
 This is still consistent with the rules of immutable types, which only look at the fields and assume that when methods do not modify the fields, they are actually non-modifying.
