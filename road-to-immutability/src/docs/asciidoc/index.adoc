@@ -53,6 +53,10 @@ Bart Naudts <bart.naudts@codelaser.io>
 :testMark: pass:normal[ `@TestMark` ]
 :utilityClass: pass:normal[ `@UtilityClass` ]
 
+:y: icon:check[role="green"]
+:n: icon:times[role="red"]
+:c: icon:file-text-o[role="blue"]
+
 
 // PDF-specific TOC placement
 ifdef::backend-pdf[]
@@ -61,7 +65,7 @@ endif::[]
 
 // Abstract or introduction
 [abstract]
-Effective and eventual immutability with _maddi_, a static code analyser for Java.
+Effective and eventual immutability with _maddi_, a static code analyzer for Java.
 
 // Table of contents for PDF
 ifdef::backend-pdf[]
@@ -70,27 +74,29 @@ toc::[]
 endif::[]
 
 // Include all sections
-include::{includedir}/01-introduction.adoc[leveloffset=+1]
+include::{includedir}/010-introduction.adoc[leveloffset=+1]
 
 <<<
 
-include::{includedir}/02-finalfields.adoc[leveloffset=+1]
+include::{includedir}/020-finalfields.adoc[leveloffset=+1]
 
 <<<
 
-include::{includedir}/03-modification.adoc[leveloffset=+1]
+include::{includedir}/030-modification.adoc[leveloffset=+1]
 
 <<<
 
-include::{includedir}/04-container.adoc[leveloffset=+1]
+include::{includedir}/040-containers.adoc[leveloffset=+1]
 
 <<<
 
-include::{includedir}/05-conclusion.adoc[leveloffset=+1]
+include::{includedir}/045-linking-dependence.adoc[leveloffset=+1]
 
-// Appendices
-[appendix]
-include::{includedir}/appendix-a-reference.adoc[leveloffset=+1]
+<<<
 
-[appendix]
-include::{includedir}/appendix-b-troubleshooting.adoc[leveloffset=+1]
+include::{includedir}/050-immutability.adoc[leveloffset=+1]
+
+<<<
+
+include::{includedir}/080-hidden-content.adoc[leveloffset=+1]
+

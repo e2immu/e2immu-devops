@@ -8,7 +8,7 @@ Let us start with a definition:
 in methods that can be transitively called from non-private (non-constructor) methods.
 ****
 
-The analyser annotates with {final} in the latter case; there is no point in cluttering with an annotation when the
+The analyzer annotates with {final} in the latter case; there is no point in cluttering with an annotation when the
 modifier is already there.
 Fields that are not effectively final are called _variable_, they can optionally be annotated with {finalAbsent}.
 
@@ -65,7 +65,7 @@ class EffectivelyFinal2 {
 ----
 
 Note that it is perfectly possible to rewrite the first example in such a way that the `final` modifier can be used.
-From the point of view of the analyser, this does not matter.
+From the point of view of the analyzer, this does not matter.
 The wider definition will allow for more situations to be recognized for what they really are.
 
 When an object consists solely of primitives, or deeply immutable objects such as `java.lang.String`, having all
@@ -123,7 +123,7 @@ Examples 3 and 4 are functionally equivalent: there is no way of changing the va
 set.
 In the real world there may be a reason why someone requires the getters.
 Or, you may be given code as in Example 2, but you are not allowed to change it.
-Whatever the reason, the analyser should recognize effective finality.
+Whatever the reason, the analyzer should recognize effective finality.
 
 Note that we will not make a distinction between any of the different non-private access modes in Java.
 Only the private modifier gives sufficient guarantees that no reassignment to the fields is possible.
@@ -131,7 +131,7 @@ Only the private modifier gives sufficient guarantees that no reassignment to th
 We now have observed that for the purpose of defining immutability, having all your fields effectively final can be
 sufficient in certain, limited circumstances.
 
-The analyser annotates types which are not immutable, but whose fields are all effectively final, with {finalFields}.
+The analyzer annotates types which are not immutable, but whose fields are all effectively final, with {finalFields}.
 Types that have at least one variable field are never immutable, and are optionally annotated with {finalFieldsAbsent}.
 
 Note that the `record` type enforces explicitly final fields, along with additional support for equality and visibility.
